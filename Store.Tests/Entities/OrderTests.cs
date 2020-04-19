@@ -16,7 +16,7 @@ namespace Store.Tests.Domain
         public OrderTests()
         {
             _costumer = new Customer("Westefns", "westefns@outlook.com.br");
-            _product = new Product("Produto 1", 10, true);
+            _product = new Product("Produto 1", 100, true);
             _discount = new Discount(10, DateTime.Now.AddDays(5));
             _order = new Order(_costumer, 0, _discount);
         }
@@ -38,6 +38,22 @@ namespace Store.Tests.Domain
         [TestMethod]
         [TestCategory("Domain")]
         public void Dado_um_novo_pagamento_do_pedido_seu_status_deve_ser_aguardando_entrega()
+        {
+            _order.AddItem(_product, 1);
+            _order.Pay(90);
+            Assert.AreEqual(EOrderStatus.WaitingDelivery, _order.Status);
+        }
+
+        [TestMethod]
+        [TestCategory("Domain")]
+        public void Dado_um_pedido_cancelado_seu_status_deve_ser_cancelado()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod]
+        [TestCategory("Domain")]
+        public void Dado_um_novo_item_sem_produto_o_mesmo_nao_deve_ser_adicionado()
         {
             Assert.Fail();
         }
