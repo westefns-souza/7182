@@ -83,5 +83,14 @@ namespace Store.Tests.Domain
             _order.AddItem(_product, 6);
             Assert.AreEqual(60, _order.Total());
         }
+
+        [TestMethod]
+        [TestCategory("Domain")]
+        public void Dado_um_desconto_invalido_o_valor_do_pedido_deve_ser_60()
+        {
+            var oder = new Order(_costumer, 0, null);
+            _order.AddItem(_product, 6);
+            Assert.AreEqual(60, _order.Total());
+        }
     }
 }
