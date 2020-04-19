@@ -88,9 +88,9 @@ namespace Store.Tests.Domain
         [TestCategory("Domain")]
         public void Dado_um_desconto_invalido_o_valor_do_pedido_deve_ser_60()
         {
-            var oder = new Order(_costumer, 0, null);
-            _order.AddItem(_product, 6);
-            Assert.AreEqual(60, _order.Total());
+            var order = new Order(_costumer, 0, null);
+            order.AddItem(_product, 6);
+            Assert.AreEqual(60, order.Total());
         }
     
         [TestMethod]
@@ -98,9 +98,18 @@ namespace Store.Tests.Domain
         public void Dado_um_desconto_de_10_o_valor_do_pedido_deve_ser_50()
         {
             var discount = new Discount(10, DateTime.Now.AddDays(5));
-            var oder = new Order(_costumer, 10, discount);
-            _order.AddItem(_product, 5);
-            Assert.AreEqual(50, _order.Total());
+            var order = new Order(_costumer, 0, discount);
+            order.AddItem(_product, 6);
+            Assert.AreEqual(50, order.Total());
+        }
+
+        [TestMethod]
+        [TestCategory("Domain")]
+        public void dado_uma_taxa_de_entrega_de_10_o_valor_do_pedido_deve_ser_60()
+        {
+            var order = new Order(_costumer, 10, null);
+            order.AddItem(_product, 5);
+            Assert.AreEqual(60, order.Total());
         }
     }
 }
