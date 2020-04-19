@@ -92,5 +92,15 @@ namespace Store.Tests.Domain
             _order.AddItem(_product, 6);
             Assert.AreEqual(60, _order.Total());
         }
+    
+        [TestMethod]
+        [TestCategory("Domain")]
+        public void Dado_um_desconto_de_10_o_valor_do_pedido_deve_ser_50()
+        {
+            var discount = new Discount(10, DateTime.Now.AddDays(5));
+            var oder = new Order(_costumer, 10, discount);
+            _order.AddItem(_product, 5);
+            Assert.AreEqual(50, _order.Total());
+        }
     }
 }
