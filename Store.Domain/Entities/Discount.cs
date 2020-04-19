@@ -18,7 +18,7 @@ namespace Store.Domain.Entities
             return DateTime.Compare(DateTime.Now, ExpiresDate) < 0;
         }
 
-        public decimal Valus()
+        public decimal Value()
         {
             return IsValid() ? Amount : 0;
         }
