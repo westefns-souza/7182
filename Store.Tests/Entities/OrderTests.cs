@@ -56,7 +56,8 @@ namespace Store.Tests.Domain
         [TestCategory("Domain")]
         public void Dado_um_novo_item_sem_produto_o_mesmo_nao_deve_ser_adicionado()
         {
-            Assert.Fail();
+            _order.AddItem(null, 1);
+            Assert.AreEqual(0, _order.Items.Count);
         }
     }
 }
