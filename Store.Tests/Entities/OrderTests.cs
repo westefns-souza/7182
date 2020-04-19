@@ -48,7 +48,8 @@ namespace Store.Tests.Domain
         [TestCategory("Domain")]
         public void Dado_um_pedido_cancelado_seu_status_deve_ser_cancelado()
         {
-            Assert.Fail();
+            _order.Cancel();
+            Assert.AreEqual(EOrderStatus.Canceled, _order.Status);
         }
 
         [TestMethod]
