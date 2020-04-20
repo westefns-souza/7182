@@ -1,9 +1,11 @@
+using System.Linq;
 using Flunt.Notifications;
 using Store.Domain.Commands;
 using Store.Domain.Commands.Interfaces;
 using Store.Domain.Entities;
 using Store.Domain.Handlers.Interfaces;
 using Store.Domain.Repositories.Interfaces;
+using Store.Domain.Utils;
 
 namespace Store.Domain.Handlers
 {
